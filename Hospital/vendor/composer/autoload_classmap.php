@@ -16,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisteredUserController' => $baseDir . '/app/Http/Controllers/Auth/RegisteredUserController.php',
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\Pasien\\JanjiPeriksaController' => $baseDir . '/app/Http/Controllers/Pasien/JanjiPeriksaController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
     'App\\Http\\Controllers\\dokter\\JadwalPeriksaController' => $baseDir . '/app/Http/Controllers/dokter/JadwalPeriksaController.php',
     'App\\Http\\Controllers\\dokter\\ObatController' => $baseDir . '/app/Http/Controllers/dokter/ObatController.php',

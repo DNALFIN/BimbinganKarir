@@ -1,4 +1,8 @@
 <?php
+
+use App\Http\Controllers\dokter\PeriksaPasienController;
+use App\Http\Controllers\Pasien\RiwayatPeriksaController;
+use App\Http\Controllers\Pasien\JanjiPeriksaController;
 use App\Http\Controllers\dokter\JadwalPeriksaController;
 use App\Http\Controllers\dokter\ObatController;
 use App\Http\Controllers\ProfileController;
@@ -56,6 +60,18 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () 
         Route::post('/{id}/status', [JadwalPeriksaController::class, 'toggleStatus'])->name('dokter.jadwal.status');
         Route::delete('/{id}', [JadwalPeriksaController::class, 'destroy'])->name('dokter.jadwal.destroy');
     });
+
+    // Routes untuk menu Periksa Pasien
+    Route::prefix('periksa')->group(function () {
+        Route::get('/', [PeriksaPasienController::class, 'index'])->name('dokter.periksa.index');
+        Route::get('/{id}/create', [PeriksaPasienController::class, 'create'])->name('dokter.periksa.create');
+        Route::get('/{id}/edit', [PeriksaPasienController::class, 'edit'])->name('dokter.periksa.edit');
+        Route::post('/{id}/store', [PeriksaPasienController::class, 'store'])->name('dokter.periksa.store');
+        Route::put('/{id}', [PeriksaPasienController::class, 'update'])->name('dokter.periksa.update');
+
+
+    });
+    
 });
 
 
@@ -71,6 +87,13 @@ Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->group(function () 
         Route::post('/', [JanjiPeriksaController::class, 
         'store'])->name('pasien.janji-periksa.store');
     });
+
+    Route::prefix('riwayat-periksa')->group(function(){
+        Route::get('/', [RiwayatPeriksaController::class, 'index'])->name('pasien.riwayat-periksa.index');
+        Route::get('/{id}/detail', [RiwayatPeriksaController::class, 'detail'])->name('pasien.riwayat-periksa.detail');
+        Route::get('/{id}/riwayat', [RiwayatPeriksaController::class, 'riwayat'])->name('pasien.riwayat-periksa.riwayat');
+    });
+    
 });
 
 require __DIR__.'/auth.php';

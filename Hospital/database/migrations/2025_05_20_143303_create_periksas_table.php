@@ -16,7 +16,10 @@ return new class extends Migration
             $table->foreignId('id_janji_periksa')->constrained('janji_periksas')->onDelete('cascade');
             $table->datetime('tgl_periksa');
             $table->string('catatan');
+            $table->string('obat')->nullable();
+            $table->integer('harga_obat')->nullable();
             $table->integer('biaya_periksa');
+            $table->integer('total_bayar');
             $table->timestamps();
         });
     }

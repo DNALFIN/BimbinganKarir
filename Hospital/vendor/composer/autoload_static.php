@@ -603,6 +603,7 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Http\\Controllers\\Auth\\RegisteredUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisteredUserController.php',
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Pasien\\JanjiPeriksaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Pasien/JanjiPeriksaController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Controllers\\dokter\\JadwalPeriksaController' => __DIR__ . '/../..' . '/app/Http/Controllers/dokter/JadwalPeriksaController.php',
         'App\\Http\\Controllers\\dokter\\ObatController' => __DIR__ . '/../..' . '/app/Http/Controllers/dokter/ObatController.php',

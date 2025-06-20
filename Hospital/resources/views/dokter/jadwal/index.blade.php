@@ -60,8 +60,8 @@
                                 <td class="align-middle text-start">{{ $jadwal->jam_selesai }}</td>
                                <td class="align-middle text-start">
                                 <!-- Menampilkan badge dengan status 'aktif' atau 'nonaktif' -->
-                                <span class="badge {{ $jadwal->status == 'aktif' ? 'bg-success' : 'bg-danger' }} text-white fw-bold fs-5">
-                                    {{ ucfirst($jadwal->status) }}
+                                <span class="badge {{ $jadwal->status == 1 ? 'bg-success' : 'bg-danger' }} text-white fw-bold fs-5">
+                                    {{ ucfirst($jadwal->status ? 'aktif' : 'nonaktif') }}
                                 </span>
                             </td>
 

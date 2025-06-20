@@ -47,7 +47,7 @@ class JadwalPeriksaController extends Controller
             'hari' => $request->hari, // Hari jadwal
             'jam_mulai' => $request->jam_mulai, // Jam mulai jadwal
             'jam_selesai' => $request->jam_selesai, // Jam selesai jadwal
-            'status' => 'nonaktif',  // Set status default jadwal menjadi nonaktif
+            'status' => 0,  // Set status default jadwal menjadi nonaktif (0 = nonaktif dan 1 = aktif)
         ]);
 
         // Redirect ke halaman daftar jadwal dengan pesan sukses
@@ -71,17 +71,17 @@ class JadwalPeriksaController extends Controller
         $jadwal = JadwalPeriksa::findOrFail($id);
 
         // Jika jadwal saat ini tidak aktif, aktifkan jadwal ini
-        if ($jadwal->status !== 'aktif') {
+        if ($jadwal->status !== '1') { // 1 = aktif
             //Nonaktifkan jadwal aktif lain untuk dokter yang sama
             JadwalPeriksa::where('id_dokter', $jadwal->id_dokter)
-                ->where('status', 'aktif')
-                ->update(['status' => 'nonaktif']);
+                ->where('status', 1) // 1 = aktif
+                ->update(['status' => 0]); // 0 = nonaktif
 
             // Aktifkan jadwal ini
-            $jadwal->status = 'aktif';
+            $jadwal->status = 1; // 1 = aktif
         } else {
             // Jika jadwal saat ini aktif, jadikan nonaktif
-            $jadwal->status = 'nonaktif';
+            $jadwal->status = 0; // 0 = nonaktif
         }
 
         // Simpan perubahan status jadwal

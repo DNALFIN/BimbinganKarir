@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Pasien;
 
 use App\Http\Controllers\Controller;
+use App\Models\JadwalPeriksa;
+use App\Models\JanjiPeriksa;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 class JanjiPeriksaController extends Controller
 {
@@ -34,13 +40,12 @@ class JanjiPeriksaController extends Controller
             'keluhan' => 'required',
         ]);
         
-        $jadwalPeriksa = JadwalPeriksa::where('id_dokter',
-        $request->id_dokter)
+        $jadwalPeriksa = JadwalPeriksa::where('id_dokter', $request->id_dokter)
         ->where('status', true) 
         ->first();
 
-        $jumlahJanji = JanjiPeriksa::where('id_jadwal_periksa',
-        $jadwalPeriksa->id)->count();
+        // algoritma nomor antrian
+        $jumlahJanji = JanjiPeriksa::where('id_jadwal_periksa', $jadwalPeriksa->id)->count();
         $noAntrian = $jumlahJanji + 1;
 
         JanjiPeriksa::create([
